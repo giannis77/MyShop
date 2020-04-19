@@ -7,9 +7,11 @@ Namespace Controllers
         Inherits Controller
 
         Private m_oContext As ProductRepository
+        Private m_oProductCategories As ProductCategoryRepository
 
         Public Sub New()
             m_oContext = New ProductRepository
+            m_oProductCategories = New ProductCategoryRepository
 
         End Sub
         ' GET: ProductManager
@@ -25,11 +27,14 @@ Namespace Controllers
 
         ' GET: ProductManager
         Function CreateProduct() As ActionResult
-            Dim oProduct As Product
+            Dim oProductViewModel As ProductManagerViewModel
 
-            oProduct = New Product()
+            oProductViewModel = New ProductManagerViewModel
 
-            Return View(oProduct)
+            oProductViewModel.oProduct = New Product
+            oProductViewModel.ProductCategories = m_oProductCategories.Collection
+
+            Return View(oProductViewModel)
         End Function
         <HttpPost()>
         Function CreateProduct(ByVal oProduct As Product) As ActionResult
@@ -46,15 +51,20 @@ Namespace Controllers
 
         Function EditProduct(ByVal sId As String) As ActionResult
             Dim oProduct As Product
+            Dim oProductViewModel As ProductManagerViewModel
 
             oProduct = New Product()
+            oProductViewModel = New ProductManagerViewModel()
 
             oProduct = m_oContext.ActionFind(sId)
 
             If oProduct Is Nothing Then
                 Return HttpNotFound()
             Else
-                Return View(oProduct)
+                oProductViewModel.oProduct = oProduct
+                oProductViewModel.ProductCategories = m_oProductCategories.Collection
+
+                Return View(oProductViewModel)
             End If
 
         End Function
@@ -111,9 +121,6 @@ Namespace Controllers
             oProductToDelete = New Product()
 
             oProductToDelete = m_oContext.ActionFind(sId)
-
-            oProductToDelete = m_oContext.ActionFind(sId)
-
 
             If oProductToDelete Is Nothing Then
                 Return HttpNotFound()

@@ -1,4 +1,4 @@
-﻿@ModelType MyShop.Core.Product
+﻿@ModelType MyShop.Core.ProductManagerViewModel
 @Code
     ViewData("Title") = "CreateProduct"
 End Code
@@ -13,42 +13,41 @@ End Code
         <hr />
         @Html.ValidationSummary(True, "", New With { .class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(Function(model) model.Name, htmlAttributes:= New With { .class = "control-label col-md-2" })
+            @Html.LabelFor(Function(model) model.oProduct.Name, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.Name, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.Name, "", New With { .class = "text-danger" })
+                @Html.EditorFor(Function(model) model.oProduct.Name, New With {.htmlAttributes = New With {.class = "form-control"}})
+                @Html.ValidationMessageFor(Function(model) model.oProduct.Name, "", New With {.class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(Function(model) model.Price, htmlAttributes:= New With { .class = "control-label col-md-2" })
+            @Html.LabelFor(Function(model) model.oProduct.Price, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.Price, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.Price, "", New With { .class = "text-danger" })
+                @Html.EditorFor(Function(model) model.oProduct.Price, New With {.htmlAttributes = New With {.class = "form-control"}})
+                @Html.ValidationMessageFor(Function(model) model.oProduct.Price, "", New With {.class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(Function(model) model.Description, htmlAttributes:= New With { .class = "control-label col-md-2" })
+            @Html.LabelFor(Function(model) model.oProduct.Description, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.Description, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.Description, "", New With { .class = "text-danger" })
+                @Html.EditorFor(Function(model) model.oProduct.Description, New With {.htmlAttributes = New With {.class = "form-control"}})
+                @Html.ValidationMessageFor(Function(model) model.oProduct.Description, "", New With {.class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(Function(model) model.Category, htmlAttributes:= New With { .class = "control-label col-md-2" })
+            @Html.LabelFor(Function(model) model.oProduct.Category, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.Category, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.Category, "", New With { .class = "text-danger" })
+                @Html.DropDownListFor(Function(model) model.oProduct.Category, New SelectList(Model.ProductCategories, "Category", "Category"), New With {.htmlAttributes = New With {.Class = "form-control"}})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(Function(model) model.Image, htmlAttributes:= New With { .class = "control-label col-md-2" })
+            @Html.LabelFor(Function(model) model.oProduct.Image, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.Image, New With { .htmlAttributes = New With { .class = "form-control" } })
-                @Html.ValidationMessageFor(Function(model) model.Image, "", New With { .class = "text-danger" })
+                @Html.EditorFor(Function(model) model.oProduct.Image, New With {.htmlAttributes = New With {.class = "form-control"}})
+                @Html.ValidationMessageFor(Function(model) model.oProduct.Image, "", New With {.class = "text-danger"})
             </div>
         </div>
 
@@ -60,7 +59,7 @@ End Code
     </div>
 End Using
 
-<div>
+                                <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 

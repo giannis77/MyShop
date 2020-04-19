@@ -221,6 +221,7 @@
     <Compile Include="App_Start\Startup.Auth.vb" />
     <Compile Include="Controllers\AccountController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
+    <Compile Include="Controllers\ProductCategoryManagerController.vb" />
     <Compile Include="Controllers\ProductManagerController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
@@ -302,6 +303,10 @@
     <Content Include="Views\ProductManager\EditProduct.vbhtml" />
     <Content Include="Views\ProductManager\Delete.vbhtml" />
     <Content Include="Views\ProductManager\CreateProduct.vbhtml" />
+    <Content Include="Views\ProductCategory\Index.vbhtml" />
+    <Content Include="Views\ProductCategory\CreateProductCategory.vbhtml" />
+    <Content Include="Views\ProductCategory\EditProductCategory.vbhtml" />
+    <Content Include="Views\ProductCategory\Delete.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
