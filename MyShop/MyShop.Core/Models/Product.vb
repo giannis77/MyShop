@@ -2,10 +2,7 @@
 Imports System.ComponentModel.DataAnnotations
 
 Public Class Product
-
-
-
-    Public Property Id As String
+    Inherits BaseEntity
 
     <StringLength(20)>
     <DisplayName("Product Name")>
@@ -18,7 +15,4 @@ Public Class Product
     Public Property Category As String
     Public Property Image As String
 
-    Private Sub Product()
-        Me.Id = Guid.NewGuid().ToString()
-    End Sub
 End Class

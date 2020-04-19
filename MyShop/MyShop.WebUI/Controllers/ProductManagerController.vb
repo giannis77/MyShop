@@ -6,12 +6,12 @@ Namespace Controllers
     Public Class ProductManagerController
         Inherits Controller
 
-        Private m_oContext As ProductRepository
-        Private m_oProductCategories As ProductCategoryRepository
+        Private m_oContext As InMemoryRepository(Of Product)
+        Private m_oProductCategories As InMemoryRepository(Of ProductCategory)
 
         Public Sub New()
-            m_oContext = New ProductRepository
-            m_oProductCategories = New ProductCategoryRepository
+            m_oContext = New InMemoryRepository(Of Product)
+            m_oProductCategories = New InMemoryRepository(Of ProductCategory)
 
         End Sub
         ' GET: ProductManager
@@ -62,7 +62,7 @@ Namespace Controllers
                 Return HttpNotFound()
             Else
                 oProductViewModel.oProduct = oProduct
-                oProductViewModel.ProductCategories = m_oProductCategories.Collection
+                oProductViewModel.ProductCategories = m_oProductCategories.Collection()
 
                 Return View(oProductViewModel)
             End If

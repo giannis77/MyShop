@@ -1,8 +1,6 @@
 ﻿Public Class ProductCategory
-    Public Property Id As String
+    Inherits BaseEntity
+
     Public Property Category As String
 
-    Private Sub ProductCategory()
-        Me.Id = Guid.NewGuid().ToString()
-    End Sub
 End Class
