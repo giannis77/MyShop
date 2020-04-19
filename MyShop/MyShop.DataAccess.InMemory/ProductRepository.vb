@@ -15,16 +15,16 @@ Public Class ProductRepository
         End If
     End Sub
 
-    Public Sub Commit()
+    Public Sub ActionCommit()
 
         Cache("lstProducts") = lstProducts
 
     End Sub
-    Public Sub Insert(ByVal oProduct As Product)
+    Public Sub ActionInsert(ByVal oProduct As Product)
         lstProducts.Add(oProduct)
     End Sub
 
-    Public Sub Update(ByVal oProduct As Product)
+    Public Sub ActionUpdate(ByVal oProduct As Product)
         Dim oProductToUpdate As Product
 
         oProductToUpdate = New Product
@@ -38,7 +38,7 @@ Public Class ProductRepository
         End If
     End Sub
 
-    Public Function Find(ByVal sId As String)
+    Public Function ActionFind(ByVal sId As String)
         Dim oProductFind As Product
 
         oProductFind = New Product
@@ -51,13 +51,13 @@ Public Class ProductRepository
             Throw New Exception("Product Not Found")
         End If
     End Function
-
+    'Return a list than can queried
     Public Function Collection() As IQueryable(Of Product)
         Return lstProducts.AsQueryable()
     End Function
 
 
-    Public Sub Delete(ByVal oProduct As Product)
+    Public Sub ActionDelete(ByVal oProduct As Product)
         Dim oProductToDelete As Product
 
         oProductToDelete = New Product
