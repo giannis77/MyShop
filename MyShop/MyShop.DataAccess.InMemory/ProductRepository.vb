@@ -8,7 +8,7 @@ Public Class ProductRepository
 
     Public Sub New()
 
-        lstProducts = Cache("lstProduct")
+        lstProducts = Cache("lstProducts")
 
         If lstProducts Is Nothing Then
             lstProducts = New List(Of Product)
@@ -57,12 +57,12 @@ Public Class ProductRepository
     End Function
 
 
-    Public Sub ActionDelete(ByVal oProduct As Product)
+    Public Sub ActionDelete(ByVal sId As String)
         Dim oProductToDelete As Product
 
         oProductToDelete = New Product
 
-        oProductToDelete = lstProducts.Find(Function(p) p.Id = oProduct.Id)
+        oProductToDelete = lstProducts.Find(Function(p) p.Id = sId)
 
         If Not oProductToDelete Is Nothing Then
             lstProducts.Remove(oProductToDelete)
