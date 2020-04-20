@@ -2,6 +2,7 @@
 Imports MyShop.Core
 
 Public Class InMemoryRepository(Of T As BaseEntity)
+    Implements IRepository(Of T)
     Private Cache As ObjectCache = MemoryCache.Default
     Private lstItems As List(Of T)
     Private m_sClassName As String
@@ -16,16 +17,15 @@ Public Class InMemoryRepository(Of T As BaseEntity)
         End If
     End Sub
 
-    Public Sub ActionCommit()
-
+    Public Sub ActionCommit() Implements IRepository(Of T).ActionCommit
         Cache(m_sClassName) = lstItems
 
     End Sub
-    Public Sub ActionInsert(ByVal t As T)
+    Public Sub ActionInsert(ByVal t As T) Implements IRepository(Of T).ActionInsert
         lstItems.Add(t)
     End Sub
 
-    Public Sub ActionUpdate(ByVal t As T)
+    Public Sub ActionUpdate(ByVal t As T) Implements IRepository(Of T).ActionUpdate
         Dim otToUpdate As T
 
         otToUpdate = lstItems.Find(Function(p) p.Id = t.Id)
@@ -37,7 +37,7 @@ Public Class InMemoryRepository(Of T As BaseEntity)
         End If
     End Sub
 
-    Public Function ActionFind(ByVal sId As String)
+    Public Function ActionFind(ByVal sId As String) Implements IRepository(Of T).ActionFind
         Dim otToFind As T
 
         otToFind = lstItems.Find(Function(p) p.Id = sId)
@@ -49,12 +49,12 @@ Public Class InMemoryRepository(Of T As BaseEntity)
         End If
     End Function
     'Return a list than can queried
-    Public Function Collection() As IQueryable(Of T)
+    Public Function Collection() As IQueryable(Of T) Implements IRepository(Of T).Collection
         Return lstItems.AsQueryable()
     End Function
 
 
-    Public Sub ActionDelete(ByVal sId As String)
+    Public Sub ActionDelete(ByVal sId As String) Implements IRepository(Of T).ActionDelete
         Dim otToDelete As T
 
         otToDelete = lstItems.Find(Function(p) p.Id = sId)

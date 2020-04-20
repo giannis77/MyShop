@@ -6,11 +6,9 @@ Namespace Controllers
     Public Class ProductCategoryController
         Inherits Controller
 
-        Private m_oContext As InMemoryRepository(Of ProductCategory)
-
-        Public Sub New()
-            m_oContext = New InMemoryRepository(Of ProductCategory)
-
+        Private m_oContext As IRepository(Of ProductCategory)
+        Public Sub New(ByVal productCategContext As IRepository(Of ProductCategory))
+            m_oContext = productCategContext
         End Sub
         ' GET: ProductManager
         Function Index() As ActionResult
