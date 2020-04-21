@@ -313,7 +313,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.vbhtml" />
     <Content Include="Views\Shared\Lockout.vbhtml" />
     <Content Include="Views\Shared\_LoginPartial.vbhtml" />
-    <Content Include="Views\ProductManager\Index.vbhtml" />
     <Content Include="Views\ProductManager\EditProduct.vbhtml" />
     <Content Include="Views\ProductManager\Delete.vbhtml" />
     <Content Include="Views\ProductManager\CreateProduct.vbhtml" />
@@ -321,6 +320,7 @@
     <Content Include="Views\ProductCategory\CreateProductCategory.vbhtml" />
     <Content Include="Views\ProductCategory\EditProductCategory.vbhtml" />
     <Content Include="Views\ProductCategory\Delete.vbhtml" />
+    <Content Include="Views\ProductManager\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

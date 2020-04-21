@@ -3,6 +3,7 @@ Imports Microsoft.Practices.Unity
 Imports Microsoft.Practices.Unity.Configuration
 Imports MyShop.Core
 Imports MyShop.DataAccess.InMemory
+Imports MyShop.DataAccess.SQL
 Imports Unity
 
 ''' <summary>
@@ -36,8 +37,8 @@ Public Class UnityConfig
 
         ' TODO: Register your types here
         ' container.RegisterType(Of IProductRepository, ProductRepository)()
-        container.RegisterType(Of IRepository(Of Product), InMemoryRepository(Of Product))()
-        container.RegisterType(Of IRepository(Of ProductCategory), InMemoryRepository(Of ProductCategory))()
+        container.RegisterType(Of IRepository(Of Product), SQLRepository(Of Product))()
+        container.RegisterType(Of IRepository(Of ProductCategory), SQLRepository(Of ProductCategory))()
     End Sub
 
 End Class

@@ -71,10 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.vb" />
-    <Compile Include="Migrations\202004201229378_Initial.Designer.vb">
-      <DependentUpon>202004201229378_Initial.vb</DependentUpon>
+    <Compile Include="Migrations\202004201649311_Initial.Designer.vb">
+      <DependentUpon>202004201649311_Initial.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004201229378_Initial.vb" />
+    <Compile Include="Migrations\202004201649311_Initial.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -91,10 +91,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SQLRepository.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004201229378_Initial.resx">
-      <DependentUpon>202004201229378_Initial.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004201649311_Initial.resx">
+      <DependentUpon>202004201649311_Initial.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

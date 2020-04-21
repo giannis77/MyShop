@@ -6,7 +6,7 @@ End Code
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateProduct")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
