@@ -5,13 +5,13 @@ End Code
 
 <h2>CreateProduct</h2>
 
-@Using (Html.BeginForm()) 
+@Using (Html.BeginForm("CreateProduct", "ProductManager", FormMethod.Post, New With {.encType = "multipart/form-data"}))
     @Html.AntiForgeryToken()
-    
+
     @<div class="form-horizontal">
         <h4>Product</h4>
         <hr />
-        @Html.ValidationSummary(True, "", New With { .class = "text-danger" })
+        @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
         <div class="form-group">
             @Html.LabelFor(Function(model) model.oProduct.Name, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
@@ -46,8 +46,7 @@ End Code
         <div class="form-group">
             @Html.LabelFor(Function(model) model.oProduct.Image, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.oProduct.Image, New With {.htmlAttributes = New With {.class = "form-control"}})
-                @Html.ValidationMessageFor(Function(model) model.oProduct.Image, "", New With {.class = "text-danger"})
+               <input type="file" id="file" name="file" class="form-control"/>
             </div>
         </div>
 

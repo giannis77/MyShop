@@ -1,18 +1,22 @@
 ﻿@ModelType MyShop.Core.ProductManagerViewModel
 @Code
-    ViewData("Title") = "EditProduct"
+    ViewData("Title") = "Edit Product"
 End Code
 
 <h2>EditProduct</h2>
 
-@Using (Html.BeginForm())
+@Using (Html.BeginForm("EditProduct", "ProductManager", FormMethod.Post, New With {.encType = "multipart/form-data"}))
     @Html.AntiForgeryToken()
-    
+
     @<div class="form-horizontal">
-        <h4>Product</h4>
-        <hr />
-        @Html.ValidationSummary(True, "", New With { .class = "text-danger" })
-        @Html.HiddenFor(Function(model) model.oProduct.Id)
+    <h4>Product</h4>
+    <hr />
+    @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
+    @Html.HiddenFor(Function(model) model.oProduct.Id)
+    <div class="col-md-2">
+        <img class="img-responsive" src="~/Content/ProductImages/@Model.oProduct.Image" />
+    </div>
+    <div class="col-md-10">
 
         <div class="form-group">
             @Html.LabelFor(Function(model) model.oProduct.Name, htmlAttributes:=New With {.class = "control-label col-md-2"})
@@ -48,8 +52,7 @@ End Code
         <div class="form-group">
             @Html.LabelFor(Function(model) model.oProduct.Image, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(Function(model) model.oProduct.Image, New With {.htmlAttributes = New With {.class = "form-control"}})
-                @Html.ValidationMessageFor(Function(model) model.oProduct.Image, "", New With {.class = "text-danger"})
+                <input type="file" id="file" name="file" class="form-control" />
             </div>
         </div>
 
@@ -59,6 +62,7 @@ End Code
             </div>
         </div>
     </div>
+</div>
 End Using
 
 <div>

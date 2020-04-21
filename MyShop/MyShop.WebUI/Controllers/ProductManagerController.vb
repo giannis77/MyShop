@@ -1,4 +1,5 @@
-﻿Imports System.Web.Mvc
+﻿Imports System.IO
+Imports System.Web.Mvc
 Imports MyShop.Core
 Imports MyShop.DataAccess.InMemory
 
@@ -39,10 +40,15 @@ Namespace Controllers
             Return View(oProductViewModel)
         End Function
         <HttpPost()>
-        Function CreateProduct(ByVal oProduct As Product) As ActionResult
+        Function CreateProduct(ByVal oProduct As Product,
+                               ByVal file As HttpPostedFileBase) As ActionResult
 
             If Not ModelState.IsValid Then Return View(oProduct)
 
+            If Not file Is Nothing Then
+                oProduct.Image = oProduct.Id + Path.GetExtension(file.FileName)
+                file.SaveAs(Server.MapPath("//Content//ProductImages//") + oProduct.Image)
+            End If
             m_oContext.ActionInsert(oProduct)
             m_oContext.ActionCommit()
 
@@ -72,7 +78,8 @@ Namespace Controllers
         End Function
         <HttpPost()>
         Function EditProduct(ByVal oProduct As Product,
-                             ByVal id As String) As ActionResult
+                             ByVal id As String,
+                             ByVal file As HttpPostedFileBase) As ActionResult
 
             Dim oProductToEdit As Product
 
@@ -88,10 +95,14 @@ Namespace Controllers
                     'return Errors
                     Return View(oProduct)
                 Else
+
+                    If Not file Is Nothing Then
+                        oProductToEdit.Image = oProduct.Id + Path.GetExtension(file.FileName)
+                        file.SaveAs(Server.MapPath("//Content//ProductImages//") + oProductToEdit.Image)
+                    End If
                     oProductToEdit.Category = oProduct.Category
                     oProductToEdit.Name = oProduct.Name
                     oProductToEdit.Description = oProduct.Description
-                    oProductToEdit.Image = oProduct.Image
                     oProductToEdit.Price = oProduct.Price
 
                     m_oContext.ActionCommit()

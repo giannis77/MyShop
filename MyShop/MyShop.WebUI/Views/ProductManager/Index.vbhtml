@@ -22,14 +22,14 @@ End Code
         <th>
             @Html.DisplayNameFor(Function(model) model.Category)
         </th>
-        <th>
-            @Html.DisplayNameFor(Function(model) model.Image)
-        </th>
         <th></th>
     </tr>
 
 @For Each item In Model
     @<tr>
+        <td>
+            <img class="img-thumbnail" style="height:50px" src="~/Content/ProductImages/@item.Image"/>
+        </td>
         <td>
             @Html.DisplayFor(Function(modelItem) item.Name)
         </td>
@@ -41,9 +41,6 @@ End Code
         </td>
         <td>
             @Html.DisplayFor(Function(modelItem) item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.Image)
         </td>
         <td>
             @Html.ActionLink("Edit", "EditProduct", New With {.id = item.Id}) |
