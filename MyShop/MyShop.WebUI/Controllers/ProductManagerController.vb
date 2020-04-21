@@ -51,14 +51,14 @@ Namespace Controllers
 
         End Function
 
-        Function EditProduct(ByVal sId As String) As ActionResult
+        Function EditProduct(ByVal id As String) As ActionResult
             Dim oProduct As Product
             Dim oProductViewModel As ProductManagerViewModel
 
             oProduct = New Product()
             oProductViewModel = New ProductManagerViewModel()
 
-            oProduct = m_oContext.ActionFind(sId)
+            oProduct = m_oContext.ActionFind(id)
 
             If oProduct Is Nothing Then
                 Return HttpNotFound()
@@ -72,13 +72,13 @@ Namespace Controllers
         End Function
         <HttpPost()>
         Function EditProduct(ByVal oProduct As Product,
-                             ByVal sId As String) As ActionResult
+                             ByVal id As String) As ActionResult
 
             Dim oProductToEdit As Product
 
             oProductToEdit = New Product()
 
-            oProductToEdit = m_oContext.ActionFind(sId)
+            oProductToEdit = m_oContext.ActionFind(id)
 
 
             If oProductToEdit Is Nothing Then
@@ -101,12 +101,12 @@ Namespace Controllers
 
         End Function
 
-        Function Delete(ByVal sId As String) As ActionResult
+        Function Delete(ByVal id As String) As ActionResult
             Dim oProductToDelete As Product
 
             oProductToDelete = New Product()
 
-            oProductToDelete = m_oContext.ActionFind(sId)
+            oProductToDelete = m_oContext.ActionFind(id)
 
             If oProductToDelete Is Nothing Then
                 Return HttpNotFound()
@@ -117,18 +117,18 @@ Namespace Controllers
         End Function
         <HttpPost()>
         <ActionName("Delete")>
-        Function ConfirmDelete(ByVal sId As String) As ActionResult
+        Function ConfirmDelete(ByVal id As String) As ActionResult
             Dim oProductToDelete As Product
 
             oProductToDelete = New Product()
 
-            oProductToDelete = m_oContext.ActionFind(sId)
+            oProductToDelete = m_oContext.ActionFind(id)
 
             If oProductToDelete Is Nothing Then
                 Return HttpNotFound()
             Else
 
-                m_oContext.ActionDelete(sId)
+                m_oContext.ActionDelete(id)
                 m_oContext.ActionCommit()
                 Return RedirectToAction("Index")
             End If

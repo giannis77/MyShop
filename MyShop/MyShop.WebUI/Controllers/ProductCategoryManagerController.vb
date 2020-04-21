@@ -41,12 +41,12 @@ Namespace Controllers
 
         End Function
 
-        Function EditProductCategory(ByVal sId As String) As ActionResult
+        Function EditProductCategory(ByVal id As String) As ActionResult
             Dim oProductCategory As ProductCategory
 
             oProductCategory = New ProductCategory()
 
-            oProductCategory = m_oContext.ActionFind(sId)
+            oProductCategory = m_oContext.ActionFind(id)
 
             If oProductCategory Is Nothing Then
                 Return HttpNotFound()
@@ -57,13 +57,13 @@ Namespace Controllers
         End Function
         <HttpPost()>
         Function EditProductCategory(ByVal oProductCategory As ProductCategory,
-                                     ByVal sId As String) As ActionResult
+                                     ByVal id As String) As ActionResult
 
             Dim oProductCategoryToEdit As ProductCategory
 
             oProductCategoryToEdit = New ProductCategory()
 
-            oProductCategoryToEdit = m_oContext.ActionFind(sId)
+            oProductCategoryToEdit = m_oContext.ActionFind(id)
 
 
             If oProductCategoryToEdit Is Nothing Then
@@ -82,12 +82,12 @@ Namespace Controllers
 
         End Function
 
-        Function Delete(ByVal sId As String) As ActionResult
+        Function Delete(ByVal id As String) As ActionResult
             Dim oProductCategoryToDelete As ProductCategory
 
             oProductCategoryToDelete = New ProductCategory()
 
-            oProductCategoryToDelete = m_oContext.ActionFind(sId)
+            oProductCategoryToDelete = m_oContext.ActionFind(id)
 
             If oProductCategoryToDelete Is Nothing Then
                 Return HttpNotFound()
@@ -98,18 +98,18 @@ Namespace Controllers
         End Function
         <HttpPost()>
         <ActionName("Delete")>
-        Function ConfirmDelete(ByVal sId As String) As ActionResult
+        Function ConfirmDelete(ByVal id As String) As ActionResult
             Dim oProductCategoryToDelete As ProductCategory
 
             oProductCategoryToDelete = New ProductCategory()
 
-            oProductCategoryToDelete = m_oContext.ActionFind(sId)
+            oProductCategoryToDelete = m_oContext.ActionFind(id)
 
             If oProductCategoryToDelete Is Nothing Then
                 Return HttpNotFound()
             Else
 
-                m_oContext.ActionDelete(sId)
+                m_oContext.ActionDelete(id)
                 m_oContext.ActionCommit()
                 Return RedirectToAction("Index")
             End If
