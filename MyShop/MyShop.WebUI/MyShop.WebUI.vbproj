@@ -321,6 +321,7 @@
     <Content Include="Views\ProductCategory\EditProductCategory.vbhtml" />
     <Content Include="Views\ProductCategory\Delete.vbhtml" />
     <Content Include="Views\ProductManager\Index.vbhtml" />
+    <Content Include="Views\Home\Details.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

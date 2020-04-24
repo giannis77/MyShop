@@ -9,35 +9,35 @@ Imports MyShop.WebUI
 
     <TestMethod()> Public Sub Index()
         ' Arrange
-        Dim controller As New HomeController()
+        'Dim controller As New HomeController()
 
-        ' Act
-        Dim result As ViewResult = DirectCast(controller.Index(), ViewResult)
+        '' Act
+        'Dim result As ViewResult = DirectCast(controller.Index(), ViewResult)
 
-        ' Assert
-        Assert.IsNotNull(result)
+        '' Assert
+        'Assert.IsNotNull(result)
     End Sub
 
     <TestMethod()> Public Sub About()
-        ' Arrange
-        Dim controller As New HomeController()
+        '' Arrange
+        'Dim controller As New HomeController()
 
-        ' Act
-        Dim result As ViewResult = DirectCast(controller.About(), ViewResult)
+        '' Act
+        'Dim result As ViewResult = DirectCast(controller.About(), ViewResult)
 
-        ' Assert
-        Dim viewData As ViewDataDictionary = result.ViewData
-        Assert.AreEqual("Your application description page.", viewData("Message"))
+        '' Assert
+        'Dim viewData As ViewDataDictionary = result.ViewData
+        'Assert.AreEqual("Your application description page.", viewData("Message"))
     End Sub
 
     <TestMethod()> Public Sub Contact()
-        ' Arrange
-        Dim controller As New HomeController()
+        '' Arrange
+        'Dim controller As New HomeController()
 
-        ' Act
-        Dim result As ViewResult = DirectCast(controller.Contact(), ViewResult)
+        '' Act
+        'Dim result As ViewResult = DirectCast(controller.Contact(), ViewResult)
 
-        ' Assert
-        Assert.IsNotNull(result)
+        '' Assert
+        'Assert.IsNotNull(result)
     End Sub
 End Class
